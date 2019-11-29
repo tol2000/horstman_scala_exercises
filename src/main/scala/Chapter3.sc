@@ -46,7 +46,8 @@ a5.sum/a5.length
 //************************** 6
 // wrong: order must be descending
 val a6 = Array[Int](6,1,4,7,2,9,8,5,3)
-val s6 = a6.sorted.toArray
+def s6fnc(s6_1:Int, s6_2:Int) = s6_1 > s6_2
+val s6 = a6.sortWith(s6fnc)
 for (i<-0 until a6.length) a6(i)=s6(i)
 print("a6: "+a6.mkString(","))
 
@@ -58,7 +59,7 @@ if (ab6.length>1) {
   while (changed) {
     changed = false
     for (i <- 1 until ab6.length) {
-      if (ab6(i) > /*or < - result the same, but passes -1 */ ab6(i - 1)) {
+      if (ab6(i) > ab6(i - 1)) {
         val tmp = ab6(i);
         ab6(i) = ab6(i - 1);
         ab6(i - 1) = tmp
@@ -68,7 +69,7 @@ if (ab6.length>1) {
     passes += 1
   }
 }
-print("ab6: "+a6.mkString(","))
+print("ab6: "+ab6.mkString(","))
 print("passes: "+passes)
 
 
